@@ -1,0 +1,52 @@
+{
+  perSystem = {
+    config,
+    pkgs,
+    ...
+  }: {
+    pre-commit = {
+      check.enable = true;
+
+      settings.hooks = {
+        # TOML/Cargo files
+        check-toml.enable = true;
+
+        # Markdown
+        markdownlint = {
+          enable = true;
+          settings.configuration = {
+            MD013 = false; # Disable line length
+            MD033 = false; # Allow inline HTML
+            MD040 = false; # Don't require language for code blocks
+            MD041 = false; # Don't ensure first line is h1 header
+          };
+        };
+
+        # Spell checking
+        typos.enable = true;
+
+        # Nix hooks
+        deadnix.enable = true;
+        nil.enable = true;
+        alejandra.enable = true;
+        statix.enable = true;
+
+        shellcheck.enable = true;
+        shfmt = {
+          enable = true;
+          excludes = ["search-commits-by-fingerprint.sh"];
+          settings.indent = 2;
+        };
+      };
+    };
+
+    apps.install-hooks = {
+      type = "app";
+      program = toString (pkgs.writeShellScript "install-hooks" ''
+        ${config.pre-commit.installationScript}
+        echo "Pre-commit hooks installed!"
+      '');
+      meta.description = "install pre-commit hooks";
+    };
+  };
+}
