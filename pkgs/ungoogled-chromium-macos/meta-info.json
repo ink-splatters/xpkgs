@@ -1,0 +1,16 @@
+{
+  "arch": "arm64",
+  "sha256": "4cc8236ffeacf8dcf3ba43422cf8d3c3ee28bf0e6eab0498b25e62906952be9a",
+  "version": "144.0.7559.96-1.1",
+  "url": "https://github.com/ungoogled-software/ungoogled-chromium-macos/releases/download/144.0.7559.96-1.1/ungoogled-chromium_144.0.7559.96-1.1_arm64-macos.dmg",
+  "details": {
+    "tag_name": "144.0.7559.96-1.1",
+    "prerelease": false,
+    "published_at": "2026-01-26T10:30:03Z",
+    "size": 132154869,
+    "digest": "sha256:4cc8236ffeacf8dcf3ba43422cf8d3c3ee28bf0e6eab0498b25e62906952be9a",
+    "created_at": "2026-01-26T10:30:05Z",
+    "updated_at": "2026-01-26T10:30:11Z",
+    "browser_download_url": "https://github.com/ungoogled-software/ungoogled-chromium-macos/releases/download/144.0.7559.96-1.1/ungoogled-chromium_144.0.7559.96-1.1_arm64-macos.dmg"
+  }
+}

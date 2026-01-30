@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./ungoogled-chromium-macos
+  ];
+}

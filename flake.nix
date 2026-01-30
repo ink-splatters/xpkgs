@@ -29,7 +29,7 @@
   outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake {inherit inputs;} (let
       systems = import inputs.systems;
-      flakeModules.default = import ./nix/flake-module.nix;
+      flakeModules.default = import ./flake-module.nix;
     in {
       imports = [
         flakeModules.default
@@ -46,28 +46,11 @@
       };
       partitions.dev = {
         # directory containing inputs-only flake.nix
-        extraInputsFlake = ./nix/dev;
+        extraInputsFlake = ./dev;
         module = {
-          imports = [./nix/dev];
+          imports = [./dev];
         };
       };
-      # this won't be exported
-      # perSystem = {
-      #   pkgs,
-      #   config,
-      #   lib,
-      #   ...
-      # }: {
-      #   options.src = lib.mkOption {
-      #     default = builtins.path {
-      #       path = ./.;
-      #       name = "src";
-      #     };
-      #   };
-
-      #   # config.packages.default = 
-      # };
-
       flake = {
         inherit flakeModules;
       };

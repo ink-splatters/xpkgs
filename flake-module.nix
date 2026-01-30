@@ -1,5 +1,6 @@
 {
   imports = [
-    # ./utils
+    ./utils
+    ./pkgs
   ];
 }
