@@ -2,22 +2,21 @@
   description = "Dependencies for development purposes";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/70801e06d9730c4f1704fbd3bbf5b8e11c03a2a7";
     git-hooks = {
-      url = "github:ink-splatters/git-hooks.nix?ref=shfmt-options";
+      url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  # TODO: doesn't make sense while git-hooks.nix is overridden
-  # nixConfig = {
-  #   extra-substituters = [
-  #     "https://pre-commit-hooks.cachix.org"
-  #   ];
-  #   extra-trusted-public-keys = [
-  #     "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
-  #   ];
-  # };
+  nixConfig = {
+    extra-substituters = [
+      "https://pre-commit-hooks.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
+    ];
+  };
 
   outputs = _: {};
 }

@@ -1,17 +1,17 @@
 {
   inputs = {
-    crane.url = "github:ipetkov/crane";
-    fenix = {
-      url = "github:nix-community/fenix/monthly";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.rust-analyzer-src.follows = "";
-    };
+    # crane.url = "github:ipetkov/crane";
+    # fenix = {
+    #   url = "github:nix-community/fenix/monthly";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.rust-analyzer-src.follows = "";
+    # };
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/70801e06d9730c4f1704fbd3bbf5b8e11c03a2a7";
     systems.url = "github:nix-systems/default";
   };
 
@@ -65,7 +65,7 @@
       #     };
       #   };
 
-      #   # config.packages.default = config.packages.odido-aap-native;
+      #   # config.packages.default = 
       # };
 
       flake = {
