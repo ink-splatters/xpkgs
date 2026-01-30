@@ -1,17 +1,20 @@
 {lib, ...}: {
   perSystem = {pkgs, ...}: {
     options.utils.darwin.verifyNotarizationHook = lib.mkOption {
-      type = lib.types.package;
+      type = lib.types.nullOr lib.types.package;
+      default = null;
     };
-    config.utils.darwin.verifyNotarizationHook = (pkgs.makeSetupHook {
-        name = "verify-notarization-hook";
+    config.utils.darwin.verifyNotarizationHook = lib.mkIf pkgs.stdenv.isDarwin (
+      (pkgs.makeSetupHook {
+          name = "verify-notarization-hook";
+        }
+        ./verify-notarization.sh).overrideAttrs {
+        sandboxProfile = ''
+          (allow process-exec
+            (literal "/usr/sbin/spctl")
+            (with no-sandbox))
+        '';
       }
-      ./verify-notarization.sh).overrideAttrs {
-      sandboxProfile = ''
-        (allow process-exec
-          (literal "/usr/sbin/spctl")
-          (with no-sandbox))
-      '';
-    };
+    );
   };
 }

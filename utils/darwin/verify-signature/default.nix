@@ -1,13 +1,15 @@
 {lib, ...}: {
   perSystem = {pkgs, ...}: {
     options.utils.darwin.verifySignatureHook = lib.mkOption {
-      type = lib.types.package;
+      type = lib.types.nullOr lib.types.package;
+      default = null;
     };
-    config.utils.darwin.verifySignatureHook =
+    config.utils.darwin.verifySignatureHook = lib.mkIf pkgs.stdenv.isDarwin (
       pkgs.makeSetupHook {
         name = "verify-signature-hook";
         propagatedBuildInputs = with pkgs; [gnupg unzip];
       }
-      ./verify-signature.sh;
+      ./verify-signature.sh
+    );
   };
 }
