@@ -6,3 +6,5 @@ __  __      _
 /_/\_\ .__/|_|\_\__, |___/
      |_|        |___/     
 ```
+
+## Powered by Nix and [flake.parts](https://flake.parts)
