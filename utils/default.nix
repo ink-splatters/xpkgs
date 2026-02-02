@@ -1,5 +1,6 @@
 {...}: {
   imports = [
     ./darwin
+    ./fetchers.nix
   ];
 }

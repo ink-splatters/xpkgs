@@ -1,8 +1,7 @@
 {lib, ...}: {
   perSystem = {pkgs, ...}: {
     options.utils.darwin.verifySignatureHook = lib.mkOption {
-      type = lib.types.nullOr lib.types.package;
-      default = null;
+      type = lib.types.package;
     };
     config.utils.darwin.verifySignatureHook = lib.mkIf pkgs.stdenv.isDarwin (
       pkgs.makeSetupHook {
